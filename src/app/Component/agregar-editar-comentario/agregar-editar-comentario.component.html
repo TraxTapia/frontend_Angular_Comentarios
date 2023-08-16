@@ -1,0 +1,67 @@
+<form [formGroup]="agregarComentario" (ngSubmit)="agregar()" class="mt-5">
+  <div class="mb-3">
+    <label for="texto" class="form-label">Titulo</label>
+    <input
+      autocomplete="off"
+      formControlName="titulo"
+      type="text"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="titulo"
+    />
+    <span
+      *ngIf="
+        agregarComentario.get('titulo')?.invalid &&
+        agregarComentario.get('titulo')?.touched
+      "
+      class="text-danger"
+      >El campo <strong>Titulo</strong> es requerido</span
+    >
+  </div>
+  <div class="mb-3">
+    <label for="creador" class="form-label">Creador</label>
+    <input
+      autocomplete="off"
+      formControlName="creador"
+      type="text"
+      class="form-control"
+      id="creador"
+      placeholder="creador"
+    />
+    <span
+      *ngIf="
+        agregarComentario.get('creador')?.invalid &&
+        agregarComentario.get('creador')?.touched
+      "
+      class="text-danger"
+      >El campo <strong>Creador</strong> es requerido</span
+    >
+  </div>
+  <div class="mb-3">
+    <label for="texto" class="form-label">Texto</label>
+    <textarea
+      autocomplete="off"
+      formControlName="texto"
+      class="form-control"
+      id="texto"
+      rows="5"
+    ></textarea>
+    <span
+      *ngIf="
+        agregarComentario.get('texto')?.invalid &&
+        agregarComentario.get('texto')?.touched
+      "
+      class="text-danger"
+      >El campo <strong>Texto</strong> es requerido</span
+    >
+  </div>
+
+  <button type="button" class="btn btn-warning">Volver</button>
+  <button
+    type="submit"
+    [disabled]="agregarComentario.invalid"
+    class="btn btn-primary float-end"
+  >
+    Agregar
+  </button>
+</form>
